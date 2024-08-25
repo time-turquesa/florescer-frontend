@@ -1,8 +1,9 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
-import {InputField} from '../../../../components/InputField'
+import { InputField } from '../../../../components/InputField'
 import Link from 'next/link'
+import { Button } from '../../../../components/Button'
 
 interface LoginFormInputs {
   email: string
@@ -19,13 +20,14 @@ const Login = () => {
   const onSubmit = (data: LoginFormInputs) => {
     console.log(data)
     // Simular o envio dos dados
-
   }
 
   return (
-    <div className="min-h-screen bg-purple-500 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg max-w-md w-full shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-purple-700">Login</h2>
+    <div className="min-h-screen flex lg:items-center lg:px-20 justify-center">
+      <div className="p-8 rounded-lg w-full">
+        <h2 className="text-5xl font-bold mb-6 text-white text-center">
+          Login
+        </h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputField
             label="E-mail"
@@ -43,19 +45,26 @@ const Login = () => {
             name="password"
             error={errors.password}
           />
-          <button
-            type="submit"
-            className="bg-blue-600 w-full p-3 text-white rounded-lg mt-4"
-          >
-            Entrar
-          </button>
+          <Button type="submit">Entrar</Button>
         </form>
-        <Link href="/signup">
-          <p>
-            Não tem cadastro?{' '}
-            <span className="text-[#432E97]">Cadastre- se já</span>
-          </p>
-        </Link>
+        <div className="hidden lg:flex items-center flex-col gap-4 mt-10">
+          <Link href="/signup">
+            <p className="text-white">
+              Não tem cadastro?{' '}
+              <span className="text-[#432E97]">Cadastre-se já</span>
+            </p>
+          </Link>
+          <p className="text-[#432E97]">Recuperar senha</p>
+        </div>
+        <div className="flex items-center flex-col justify-between gap-4 mt-10 h-[320px] lg:hidden">
+          <p className="text-[#432E97]">Recuperar senha</p>
+          <Link href="/signup">
+            <p className="text-white">
+              Desejo{' '}
+              <span className="text-[#432E97] underline">Cadastrar-me</span>
+            </p>
+          </Link>
+        </div>
       </div>
     </div>
   )

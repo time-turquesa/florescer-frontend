@@ -4,6 +4,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { InputField } from '../../../../components/InputField'
 import Link from 'next/link'
+import { Button } from '../../../../components/Button'
 
 interface SignUpFormInputs {
   fullName: string
@@ -27,10 +28,12 @@ const SignUp = () => {
   }
 
   return (
-    <div className="min-h-screen bg-purple-500 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg max-w-md w-full shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-purple-700">Cadastro</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
+    <div className="flex py-4 lg:items-center justify-center h-screen lg:px-20">
+      <div className="px-8 rounded-lg w-full">
+        <h2 className="text-4xl lg:text-5xl font-bold lg:mb-6 text-white text-center">
+          Cadastro
+        </h2>
+        <form onSubmit={handleSubmit(onSubmit)} className="z-10">
           <InputField
             label="Nome completo"
             type="text"
@@ -96,20 +99,15 @@ const SignUp = () => {
               </span>
             )}
           </div>
-          <button
-            type="submit"
-            className="bg-blue-600 w-full p-3 text-white rounded-lg mt-4"
-          >
-            Realizar cadastro
-          </button>
+          <Button type="submit">Realizar cadastro</Button>
         </form>
         <Link href="/login">
-          <button
+          <Button
             type="submit"
-            className="bg-blue-600 w-full p-3 text-white rounded-lg mt-4"
+            className="bg-transparent border border-white w-full p-3 text-white mt-4"
           >
             Cancelar cadastro
-          </button>
+          </Button>
         </Link>
       </div>
     </div>
