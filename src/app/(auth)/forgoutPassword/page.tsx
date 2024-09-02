@@ -8,6 +8,7 @@ import { Button } from '../../../../components/Button'
 interface LoginFormInputs {
   email: string
   password: string
+  confirmPassword: string
 }
 
 const Login = () => {
@@ -26,8 +27,9 @@ const Login = () => {
     <div className="min-h-screen flex lg:items-center lg:px-20 justify-center">
       <div className="p-8 rounded-lg w-full">
         <h2 className="text-5xl font-bold mb-6 text-white text-center">
-          Login
+          Esqueceu sua senha ?
         </h2>
+        <p className='text-center text-[#432E97] font-bold text-2xl'>Sem problemas, vamos criar uma nova!</p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputField
             label="E-mail"
@@ -38,35 +40,31 @@ const Login = () => {
             error={errors.email}
           />
           <InputField
-            label="Senha"
+            label="Nova Senha"
             type="password"
-            placeholder="Digite sua senha"
+            placeholder="Digite sua nova senha"
             register={register}
             name="password"
             error={errors.password}
           />
-          <Button type="submit">Entrar</Button>
+           <InputField
+            label="Confirme sua nova senha"
+            type="password"
+            placeholder="Confirme sua nova senha"
+            register={register}
+            name="password"
+            error={errors.confirmPassword}
+          />
+          <Button type="submit">Redefinir Senha</Button>
+          <Link href='/login'>
+          <Button
+            type="submit"
+            className="bg-transparent border border-white w-full p-3 text-white mt-4"
+          >
+            Area de Login
+          </Button>
+          </Link>
         </form>
-        <div className="hidden lg:flex items-center flex-col gap-4 mt-10">
-          <Link href="/signup">
-            <p className="text-white">
-              Não tem cadastro?{' '}
-              <span className="text-[#432E97]">Cadastre-se já</span>
-            </p>
-          </Link>
-          <Link href='/forgoutPassword'>
-          <p className="text-[#432E97]">Recuperar senha</p>
-          </Link>
-        </div>
-        <div className="flex items-center flex-col justify-between gap-4 mt-10 h-[320px] lg:hidden">
-          <p className="text-[#432E97]">Recuperar senha</p>
-          <Link href="/signup">
-            <p className="text-white">
-              Desejo{' '}
-              <span className="text-[#432E97] underline">Cadastrar-me</span>
-            </p>
-          </Link>
-        </div>
       </div>
     </div>
   )
